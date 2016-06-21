@@ -14,6 +14,7 @@
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{epstopdf}
+\usepackage[square]{natbib}
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage[
       pass
@@ -31,7 +32,7 @@
 \pagebreak
 
 \section{Introduction}
-Digitally recording and documenting life and daily activities is becoming increasingly popular. One such activity which enables this is lifelogging, which encapsulates a wide range of devices and sensors. Gurrin et al.~\cite{gurrin2014lifelogging} argue that lifelogging is an emergent area of research which is filled with terminology that is not well considered and defined, and as such, defines lifelogging as "the process of passively gathering, processing, and reflecting on life experience data collected by a variety of sensors, and is carried out by an individual, the lifelogger. The life experience data is mostly based on wearable sensors which directly sense activities of the person, though sometimes data from environmental sensors or other informational sensors can be incorporated into the process". Primarily, lifelogging involves an image capture device attached to a shirt or a lanyard which takes several photos a minute.
+Digitally recording and documenting life and daily activities is becoming increasingly popular. One such activity which enables this is lifelogging, which encapsulates a wide range of devices and sensors. Gurrin et al.~\cite{gurrin2014lifelogging} argues that lifelogging is an emergent area of research which is filled with terminology that is not well considered and defined, and as such, defines lifelogging as "the process of passively gathering, processing, and reflecting on life experience data collected by a variety of sensors, and is carried out by an individual, the lifelogger. The life experience data is mostly based on wearable sensors which directly sense activities of the person, though sometimes data from environmental sensors or other informational sensors can be incorporated into the process". Primarily, lifelogging involves an image capture device attached to a shirt or a lanyard which takes several photos a minute.
 
 The problem that arises here is searching through the vast number of images taken each day. This is the basis for the NTCIR Lifelogging pilot task, and consequently this research. The focus for this research project is to investigate different annotating methodologies for use in searching lifelog images. Well formed, accurate annotations are a critical aspect to a collection of lifelog images. This is why the project focuses not on searching images, but developing an annotated collection. This will be an important contribution to the community of lifelog information retrieval as the current annotations for lifelog images are of poor quality.
 
@@ -52,7 +53,7 @@ There are five aspects of human memory access, as proposed by Gurrin et al.~\cit
 \end{enumerate}
 Gurrin et al.~\cite{gurrin2014lifelogging} argues that an information retrieval system targeted at lifelogging should focus on the Five R's as information needs for the user.
 
-In the context of searching images on the web,  L. Vuurpij, et al.~\cite{vuurpij2002vind} states that image retrieval systems are restricted to the domain they cover and require a lot of domain knowledge in order to fulfill the information needs of a user. Furthermore, L. Vuurpij, et al.~\cite{vuurpij2002vind} notes that there has been a shift from computer vision and pattern recognition to psychology and cognitive science in the domain of image retrieval, where models like the Five R's~\cite{gurrin2014lifelogging}, are becoming more prevalent. 
+In the context of searching images on the web,  L. Vuurpij, et al.~\cite{vuurpij2002vind} states that image retrieval systems are restricted to the domain they cover and require a lot of domain knowledge in order to fulfil the information needs of a user. Furthermore, L. Vuurpij, et al.~\cite{vuurpij2002vind} notes that there has been a shift from computer vision and pattern recognition to psychology and cognitive science in the domain of image retrieval, where models like the Five R's~\cite{gurrin2014lifelogging}, are becoming more prevalent. 
 
 \subsection{Annotating Lifelog Images}
 The current state of the art models for image retrieval use tag-based or textual description annotations \citep{ali2010semantically}. This is typically due to the fact that retrieval models can use this text as a bag of words, or use the text to attribute some form of semantic meaning.
@@ -70,7 +71,7 @@ All of the metrics above were initially proposed with respect to the evaluation 
 \end{enumerate}
 The unigrams matched in METEOR can be based on surface forms, stemmed forms, and meanings, with the option to be extended \citep{elliott2013image}.
 
-R. Vedantam et al.~\citep{vedantam2015cider} argue through the results of their experimentation, however, that there exists a more effective model for evaluation which is rooted in human consensus. Their method, CIDEr (Concensus-based Image Description Evalutation) is a model which outperforms all other models of evaluating descriptive annotations of images. CIDEr performs so well due to high correlation with human judgement and consensus. According to R. Vedantam et al.~\cite{vedantam2015cider}, the CIDEr metric inherently captures sentence similarity, the notions of grammatically, salience, importance (precision), and accuracy (recall). CIDEr appears to improve upon the other three models and takes into account the weaknesses the other models may have, however it still relies on reference annotations.
+R. Vedantam et al.~\citep{vedantam2015cider} argue through the results of their experimentation, however, that there exists a more effective model for evaluation which is rooted in human consensus. Their method, CIDEr (Concensus-based Image Description Evaluation) is a model which outperforms all other models of evaluating descriptive annotations of images. CIDEr performs so well due to high correlation with human judgement and consensus. According to R. Vedantam et al.~\cite{vedantam2015cider}, the CIDEr metric inherently captures sentence similarity, the notions of grammatically, salience, importance (precision), and accuracy (recall). CIDEr appears to improve upon the other three models and takes into account the weaknesses the other models may have, however it still relies on reference annotations.
 
 The evaluation methods above rely on the availability of a ground truth or reference annotation that can be used to compare with the automatically generated annotation. This approach, however, is ill-suited to generating annotations for lifelog images as it is unclear what these annotations should ``look like'', because it is unknown what makes an annotation of a lifelog image ``good''. A better suited alternative for this problem is to embed the evaluation of different annotation methods within a task and thus evaluate the  methods with respect to the effectiveness the different methods induce on the task. Specifically, in this research project, the aim is to embed the evaluation of lifelog annotation within a search task. Thus the effectiveness of a system would be evaluated with respect to the search task. None of the system properties would vary apart from the method that is used to annotate images.This evaluation methodology is akin to, for example, previous work that has examined the effectiveness and quality of different topic modelling techniques and semantic models via evaluating the effect they have on search engine result effectiveness~\cite{wei2006lda,zuccon2015integrating,karimzadehgan2010estimation,yi2009comparative}.
 
@@ -98,16 +99,16 @@ While there has been some research into tagging and annotating images, there has
 % ---------------------------------
 
 \section{Research Questions}
-The literature reviewed has revealed a gap in the research that nobody else has yet addressed. Annotation of lifelog images and the evaluation of them is not a standard process. Through preliminary research, I have investigated a number of techniques which are applicable to annotating images. A number of textual summarisation evaluation methods have also been discovered, however none of these are capable of evaluation without a ground truth or gold standard. Through researching the following two questions, it is hoped that these gaps in the research can be closed.
+The literature reviewed has revealed a gap in the research. Annotation of lifelog images and the evaluation of them is not a standard process. Through preliminary research, I have investigated a number of techniques which are applicable to annotating images. A number of textual summarisation evaluation methods have also been discovered, however none of these are capable of evaluation without a ground truth or gold standard. Through researching the following two questions, it is hoped that these gaps in the research can be closed.
 
 \paragraph{RQ1:} How can annotations for a collection of lifelog images be evaluated?
-It is important that the annotations of images are accurate and of a high quality. This will need to be done without using a gold standard annotation, since this does not exist. In this way, this research will identify a novel way of evaluating annotations for lifelog images. The most promising way to do this is through extrinsic evaluation, whereby annotations are evaluated by determining the performance of a bigger system using it.
+It is important that the annotations of images are accurate and of a high quality. Low quality annotations will lead to bad evaluation results. Evaluation will be performed without using a gold standard annotation, since this does not exist. In this way, this research will investigate a novel way of evaluating annotations for lifelog images. The most promising way to do this is through extrinsic evaluation, whereby annotations are evaluated by determining the performance of a larger system as a whole with respect to each annotation methodology. In order to keep evaluation fair, a number of baseline retrieval models will be tested to weigh out the differences between them.
 
 \paragraph{RQ2:} What are the possible ways lifelog images can be annotated?
 There are many state of the art solutions for automatically summarising the contents of images, however this project will involve manual annotations. This is due to the fact that there does not exist any training data specifically for lifelog images. This makes it challenging to train a model that can identify what is in a lifelog image. It is thought that by manually annotating images, a well formed collection of annotated lifelog images can be produced, as well as data which machine learning and computer vision algorithms can exploit.
 
 \section{Aims}
-When images have annotations, it is possible to apply existing textual information retrieval techniques to search them. Annotating images allows us to represent them in some textual form (as a document). This project consists of two aims: investigating lifelog image annotation methodologies and develop an evaluation metric for each of the types of annotations.
+When images have annotations, it is possible to apply existing textual information retrieval techniques to search them. Annotating images allows us to represent them in some textual form (as a document). This project consists of two aims: developing an evaluation metric for lifelog annotations, and investigating possible lifelog image annotation methodologies.
 
 Image annotation approaches exist, however these methodologies do not have any associated literature which analyse the effectiveness of them within the context of a lifelog collection. The methods of annotation under investigation are:
 \begin{enumerate}
@@ -116,26 +117,26 @@ Image annotation approaches exist, however these methodologies do not have any a
     \item Annotation by Descriptive Text
     \item Annotation by Reverse Query
 \end{enumerate}
-Each annotation methodology requires an image annotation interface in order to collect annotations. Generating annotations for lifelog images is unreliable even when using state of the art machine learning software. It is for this reason that manual collection of annotations is preferred. The CAFFE concepts list, distributed with the lifelog image collection, demonstrates this unreliability and subsequent poor search performance. Images annotations comprise of concepts of what the software sees, however this is inaccurate. The training data used does not suite the test data, and a consequence of this is many erroneous concepts.
+Each annotation methodology requires an image annotation interface in order to collect annotations. Generating annotations for lifelog images is unreliable even when using state of the art machine learning software. It is for this reason that manual collection of annotations is preferred. The CAFFE concepts list, distributed with the lifelog image collection, demonstrates this unreliability and subsequent poor search performance. Image annotations comprise of concepts of what the software sees, however this is inaccurate. The training data used does not suite the test data, and a consequence of this is many erroneous concepts.
 
-Evaluation of the effectiveness of each methodology will occur after the collection of a substantial number of annotations. The evaluation system will operate in a similar manner to topic modelling where evaluation is embedded in a search task.  The search engine will not change between each evaluation, the only factor that changes is the annotation type. The retrieval effectiveness dictates the efficiency of the annotation methodology. 
+Evaluation of the effectiveness of each methodology will occur after the collection of a substantial number of annotations. The evaluation metric will use extrinsic evaluation (similar to topic modelling) where evaluation is embedded in a search task.  The search engine will not change between each evaluation, the only factor that changes is the annotation type. The retrieval effectiveness of the search system as a whole dictates the effectiveness of the annotation methodology. 
 
 \section{Methodology}
 \subsection{Evaluation Of Image Annotations}
-Typical image summarisation evaluation metrics make use of a reference or gold standard annotation. Since it is unknown what an annotation of a lifelog image should look like, these types of metrics are unable to be used in this project. Hence this is why the project will employ extrinsic evaluation. The evaluation of lifelog images will be embedded in a search task, much like how topic models are evaluated. The effectiveness of an annotation will be evaluated with respect the the search task. In this way, a search engine to facilitate this evaluation will be built.
+Typical image summarisation evaluation metrics make use of a reference or gold standard annotation. Since it is unknown what an annotation of a lifelog image should look like, these types of metrics are unable to be used in this project. Hence this is why the project will employ extrinsic evaluation. In this way, a search engine to facilitate this evaluation will be built.
 
 The search engine that is used in the evaluation of annotations must be able to retrieve images using the four different annotation methods outlined in this proposal. The queries used to test the effectiveness of the annotations will be taken from the NTCIR pilot task. These queries were compiled by asking lifeloggers to recollect what they thought were significant moments from their time capturing data.
 
 Each annotation type will need to be retrieved and ranked independently to each other. Since the retrieval model can influence the evaluation, a set of baseline retrieval models will be tested to weigh out the differences. The proposed evaluation methods are outlined below.
 
 \paragraph{Evaluating Tags}
-The search engine will retrieve images using tags by first tokeninsing the query, followed by retrieving images using a binary model, and finally ranking each image by weighing images with respect to the query. If a tag appears on an image, it must be relevant, and if a tag does not appear on an image it must not be relevant. When ranking images, they can be weighted by calculating the number of relevant and non-relevant tags that appear with respect to the query. An image will be more relevant to a query if more of its tags appear in the query. One difficulty with this measure is accounting for the number of tags an image has. If an image has relevant tags but many non-relevant tags, it may rank lower than an image with the same amount or less relevant tags, with less tags overall.
+The search engine will retrieve images using tags by first tokeninsing the query, followed by retrieving images using a binary model, and finally ranking each image by weighing images with respect to the query. If a tag appears on an image, it is considered relevant, and if a tag does not appear on an image it is considered not relevant. When ranking images, they can be weighted by calculating the number of relevant and non-relevant tags that appear with respect to the query. An image will be more relevant to a query if more of its tags appear in the query. One difficulty with this measure is accounting for the number of tags an image has. If an image has relevant tags but many non-relevant tags, it may rank lower than an image with the same amount or less relevant tags, with less tags overall.
 
 \paragraph{Evaluating Browsing Annotations}
 Browsing annotations are retrieved by first tokenising the query, followed by retrieving images that have concepts contained in the query, and finally ranking by weighting each image using the relevance assigned to each concept. Images will be retrieved in much the same way as the tag-based approach. If a concept has a relevancy score of zero, it will be considered the same as if a tag is not present. An image will be more relevant to a query if more of it's concepts are relevant to a query, and if those concepts have a higher relevance to the image.
 
 \paragraph{Evaluating Textual Descriptions}
-Textual descriptions are retrieved in a similar manner to typical text based retrieval methods. The textual description is treated as a vector, where each word in the vector is weighted using term frequency-inverse document frequency (tf-idf). The query is also encoded into a vector, so ranking and retrieving images is done in one step. The cosine similarity of the query vector and each description vector is calculated to produce a search listing.
+Textual descriptions are retrieved in a similar manner to typical text based retrieval methods. The textual description is treated as a vector, where each word in the vector is weighted using term frequency-inverse document frequency (tf-idf). The query is also encoded into a vector, so ranking and retrieving images is done in one step. The cosine similarity of the query vector and each description vector is calculated to produce a search results listing.
 
 \paragraph{Evaluating Reverse Queries}
 A well established method of retrieving documents that are composed of reverse queries does not exist since it is an unexplored research area. Methods for retrieving and ranking reverse queries will be investigated as part of this project. One possible way of retrieving images that contain this type of annotation could be to perform some type of query expansion in conjunction with a retrieval model similar to that used for textual descriptions.
@@ -144,9 +145,9 @@ A well established method of retrieving documents that are composed of reverse q
 In order for annotations to be collected for each of the annotation methodologies, an interface for each one must be developed. Each interface will allow users to annotate one image at a time at random from a queue of images to be annotated. 
 
 These interfaces will be made available through a web front end, allowing it to be accessible by anyone involved at any time. A database will be used to store the annotations for later evaluation.
-
+\pagebreak
 \paragraph{Tagging Interface}
-The tagging interface will allow annotators to attach tags from a vocabulary. This vocabulary will initially be comprised of tags from the set of queries distributed with NTCIR. Arbitrary tags may be added to the vocabulary at will. Similar tags will also be generated using word2vec. One image at a time will be shown to a user and they will be able to choose tags from a list as thye type.
+The tagging interface will allow annotators to attach tags from a vocabulary. This vocabulary will initially be comprised of tags from the set of queries distributed with NTCIR. Arbitrary tags may be added to the vocabulary at will. Similar tags (word embeddings) will also be generated using word2vec. One image at a time will be shown to a user and they will be able to choose tags from a list as thye type.
 
 \begin{center}
     \includegraphics[width=390px]{images/tagging}
@@ -154,8 +155,8 @@ The tagging interface will allow annotators to attach tags from a vocabulary. Th
 
 Similar tags will be shown underneath the search bar. As tags are added to an image, they will display nearby. This will allow the user annotating to see what they have added so far. By allowing the annotator to see similar tags, it is hoped that they will add more tags. 
 
-The annotations for this method are the tags that a user adds to the image. Once an annotation has finished tagging an image, another new image is shown. Images may only be tagged once.
-
+The annotations for this method are the tags that a user adds to the image. Once an annotator has finished tagging an image, another new image is shown. Images may only be tagged once.
+\pagebreak
 \paragraph{Browsing Interface}
 The image browsing interface will show a number of images and the user will judge the relevance of the images with relation to a keyword.
 
@@ -166,7 +167,7 @@ The image browsing interface will show a number of images and the user will judg
 The user will be provided with one image at a time, and a relevance scale. The user is asked to judge how relevant a given concept is to the target image. 
 
 Each image will have a set of associated concepts which are weighted on a ten point scale with zero being not relevant, five being relevant, and ten being highly relevant. This interface has a set of buttons ranging from zero to ten from which the user annotating may judge. After an annotator has selected a relevance score, either the same image with a different concept, a new image with a different concept, or a new image with the same concept will appear. No image will have the same concept judged more than once, but some images may have more concepts than others.
-
+\pagebreak
 \paragraph{Descriptive Text Interface}
 The descriptive text interface will present the user with one image at a time. The user is then asked to provide a detailed description for the image.
 
@@ -175,7 +176,7 @@ The descriptive text interface will present the user with one image at a time. T
 \end{center}
 
 This interface has already been implemented through preliminary research. This annotation method was chosen because it was thought that semantic meaning and concepts can be extracted from long form text. It was found that some users would enter annotations too short to gain any sort of semantics from it, thus some more work must be done to prevent this. Images are only annotated once.
-
+\pagebreak
 \paragraph{Reverse Query Interface}
 The reverse query interface will operate in a manner very similar to the descriptive text interface. Rather than being asked to provide a detailed description for each image, the user will be asked to enter one or more queries that they believe would result in a search engine retrieving the image.
 
@@ -194,7 +195,7 @@ The collection of images is too large for every image to be annotated at least o
 If more people are required to provide annotations due to time constraints, there are two options for recruiting humans for annotating images: students and staff at QUT or Amazon Mechanical Turk. The Mechanical Turk is an online service offered by Amazing. It allows researchers and companies to issue tasks to people. The people performing the annotations through this method may not have high English comprehension skills, which is a critical factor for high quality annotations. On the other hand, it will be difficult to recruit QUT students and staff to annotate images, since it is a very time consuming process.
 
 \section{Significance}
-There are no known studies in the literature which have collected a suitable collection of annotations for lifelog images. The culmination of this research will accelerate the development of lifelog centric search engines by providing a test collection to use as the basis for a search engine and to train predictive models and classifiers. Current state of the art image retrieval algorithms~\cite{karpathy2015deep} rely on training data in order to create unsupervised models that can in turn be used to classify the contents of images. If a training data set is not suited to the test set, it is likely that false positives and misclassifications will occur. Since humans will be collecting annotations, rather than other automated approaches, it is hoped that the annotations for a training set will be higher quality and more accurate than automatic annotation techniques. 
+There are no known studies in the literature which have collected a suitable collection of annotations for lifelog images. The culmination of this research will accelerate the development of lifelog centric search engines by providing a test collection to use as the basis for predictive models and classifiers. Current state of the art image retrieval algorithms~\cite{karpathy2015deep} rely on training data in order to create unsupervised models that can in turn be used to classify the contents of images. If a training data set is not suited to the test set, it is likely that false positives and misclassifications will occur. Since humans will be collecting annotations, rather than other automated approaches, it is hoped that the annotations for a training set will be of higher quality and more accurate than automatic annotation techniques. 
 
 Until recently, there has been a lack of a readily available, distributable test collections~\cite{gurrin2014lifelogging}. The CAFFE concept list distributed with the NTCIR lifelog data set is of poor quality because the training data is not suited to the test data~\cite{harry2016lifelog}. With more relevant image annotations, concept lists appearing within distributed lifelog collections can be improved. Assuming the outcomes of this research are successful, the result will be a meaningful contribution to the lifelog research community.
 
